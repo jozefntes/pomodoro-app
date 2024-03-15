@@ -48,7 +48,7 @@ const resetTimer = () => {
   const minuteDiv = document.querySelector(".minutes");
   const secondDiv = document.querySelector(".seconds");
 
-  minuteDiv.textContent = "01";
+  minuteDiv.textContent = "25";
   secondDiv.textContent = "00";
   state = true;
   timerAlert.textContent = "";
