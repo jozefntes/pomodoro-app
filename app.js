@@ -1,18 +1,23 @@
 const bells = new Audio("./sounds/bell.wav");
 const startBtn = document.querySelector(".btn-start");
 const resetBtn = document.querySelector(".btn-reset");
+const pauseBtn = document.querySelector(".btn-pause");
+const sessionMin = document.querySelector(".minutes");
+const sessionSec = document.querySelector(".seconds");
 const timerAlert = document.querySelector("#timer-alert");
-const session = document.querySelector(".minutes");
 let myInterval;
 let state = true;
 
 const appTimer = () => {
-  const sessionAmount = Number.parseInt(session.textContent);
+  const minAmount = Number.parseInt(sessionMin.textContent);
+  const secAmount = Number.parseInt(sessionSec.textContent);
   timerAlert.textContent = "";
+  pauseBtn.style.display = "inline-block";
+  startBtn.style.display = "none";
 
   if (state) {
     state = false;
-    let totalSeconds = sessionAmount * 60;
+    let totalSeconds = minAmount * 60 + secAmount;
 
     const updateSeconds = () => {
       const minuteDiv = document.querySelector(".minutes");
@@ -44,15 +49,31 @@ const appTimer = () => {
 };
 
 const resetTimer = () => {
+  // stop the loop
   clearInterval(myInterval);
+  state = true;
+
+  // select text divs
   const minuteDiv = document.querySelector(".minutes");
   const secondDiv = document.querySelector(".seconds");
 
+  // reset the time
   minuteDiv.textContent = "25";
   secondDiv.textContent = "00";
-  state = true;
   timerAlert.textContent = "";
+
+  //reset button displays
+  startBtn.style.display = "inline-block";
+  pauseBtn.style.display = "none";
+};
+
+const pauseTime = () => {
+  clearInterval(myInterval);
+  pauseBtn.style.display = "none";
+  startBtn.style.display = "inline-block";
+  state = true;
 };
 
 startBtn.addEventListener("click", appTimer);
 resetBtn.addEventListener("click", resetTimer);
+pauseBtn.addEventListener("click", pauseTime);

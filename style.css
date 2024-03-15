@@ -92,6 +92,10 @@ p {
   color: #d8e9ef;
 }
 
+.btn-pause {
+  display: none;
+}
+
 button {
   position: relative;
   top: 50px;
