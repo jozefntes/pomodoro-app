@@ -18,7 +18,3 @@ This project implements a Pomodoro timer, a time management technique that break
 - HTML
 - CSS
 - JavaScript
-
-## Credits
-
-This project was completed as a solution to the "Build a Pomodoro App with HTML, CSS, JavaScript" project on [Codédex](https://www.codedex.io/projects/build-a-pomodoro-app-with-html-css-js).
